@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  snake-year-admin:
+    build:
+      context: .
+      dockerfile: apps/snake-year-admin/Dockerfile
+    ports:
+      - "4200:80"
+    container_name: snake-year-admin-container
+    networks:
+      - frontend-network
+
+  snake-year-portal:
+    build:
+      context: .
+      dockerfile: apps/snake-year-portal/Dockerfile
+    ports:
+      - "4300:80"
+    container_name: snake-year-portal-container
+    networks:
+      - frontend-network
+
+networks:
+  frontend-network:
+    driver: bridge

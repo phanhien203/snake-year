@@ -1,0 +1,17 @@
+FROM node:18-alpine
+WORKDIR /apps
+
+ENV NODE_ENV dev
+
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm install
+
+COPY tsconfig.base.json ./
+
+COPY . .
+RUN npm run build --workspace=backend
+
+FROM nginx:alpine
+

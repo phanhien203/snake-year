@@ -1,0 +1,9 @@
+{
+  "name": "snake-year-admin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/snake-year-admin/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project snake-year-admin --web",
+  "targets": {}
+}
