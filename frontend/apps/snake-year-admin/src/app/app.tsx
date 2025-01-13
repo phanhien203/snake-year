@@ -1,12 +1,14 @@
 // Uncomment this line to use CSS modules
 // import styles from './app.module.scss';
 import NxWelcome from './nx-welcome';
+import { SnakeShared } from '@frontend/snake-shared';
 
 import { Route, Routes, Link } from 'react-router-dom';
 
 export function App() {
   return (
     <div>
+      <SnakeShared />
       <NxWelcome title="snake-year-admin" />
 
       {/* START: routes */}
