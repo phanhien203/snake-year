@@ -1,0 +1,15 @@
+{
+  "snake-year-portal-api": {
+    "input": "https://petstore.swagger.io/v2/swagger.json",
+    "output": {
+      "target": "apps/snake-year-portal/src/api/generated.ts",
+      "client": "react-query",
+      "override": {
+        "mutator": {
+          "path": "apps/snake-year-portal/src/api/axiosInstance.ts",
+          "name": "customInstance"
+        }
+      }
+    }
+  }
+}
