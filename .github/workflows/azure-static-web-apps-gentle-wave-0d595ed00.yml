@@ -5,14 +5,13 @@ on:
   push:
     branches:
       - master
-  paths:
+    paths:
       - "frontend/**"
 env:
   NPM_CONFIG_FORCE: true
   NPM_CONFIG_LEGACY_PEER_DEPS: true
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
@@ -28,5 +27,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: /github/workspace/frontend
-          api_location: "npm i --force && npm run build:snake-year-portal"
+          app_build_command: "npm i --force && npm run build:snake-year-portal"
           output_location: /github/workspace/frontend/dist/apps/snake-year-portal
