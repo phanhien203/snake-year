@@ -1,18 +1,18 @@
 FROM node:22.13.0 AS build
 
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
+WORKDIR /frontend
 
 COPY . .
-
+RUN npm install
 RUN npm run build:snake-year-portal
 
-FROM nginx:alpine
+FROM --platform=linux/amd64 nginxinc/nginx-unprivileged:1.27-alpine-slim
 
-COPY --from=build /app/dist/apps/snake-year-portal /usr/share/nginx/html
+COPY --chown=101 --from=build /frontend/dist/apps/snake-year-portal /app
+COPY apps/snake-year-portal/start-nginx.sh /app-nginx/start-nginx.sh
+COPY apps/snake-year-portal/nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 4300
+EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+ENTRYPOINT ["sh", "/app-nginx/start-nginx.sh"]
