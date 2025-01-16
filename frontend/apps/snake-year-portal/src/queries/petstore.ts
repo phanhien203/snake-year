@@ -22,8 +22,8 @@ import type {
   UseQueryOptions,
   UseQueryResult
 } from '@tanstack/react-query'
-import { customInstance } from './axiosInstance';
-import type { ErrorType, BodyType } from './axiosInstance';
+import { customInstance } from '../../../../libs/snake-shared/src/axios/axiosInstance';
+import type { ErrorType, BodyType } from '../../../../libs/snake-shared/src/axios/axiosInstance';
 export type LoginUserParams = {
 /**
  * The user name for login

@@ -1,5 +1,5 @@
 import { SnakeShared } from '@frontend/snake-shared';
-import { useGetInventory } from '../api/generated';
+import { useGetInventory } from '../queries/petstore';
 
 export function App() {
   const { data, isLoading, error } = useGetInventory();
